@@ -168,4 +168,75 @@ public final class ERC20Encoder {
         try! encoder.encode(function: function, arguments: [tokens])
         return encoder.data
     }
+    
+    /// Encodes a function call to `encodeGetExchangeBalance`
+    ///
+    /// Solidity function: `function getBalance(address contractOwner, array[address] tokens) public returns (array);`
+    public static func encodeExchangeBalance(contractOwner: Address, tokens: [Address]) -> Data {
+        let function = Function(name: "getBalance", parameters: [.address, .dynamicArray(.address)])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [contractOwner, tokens])
+        return encoder.data
+    }
+    
+    /// Encodes a function call to `trxToTokenSwapInput`
+    ///
+    /// Solidity function: `function trxToTokenSwapInput(uint256 min_tokens, uint256 deadline) public returns (uint256);`
+    public static func encodetTrxToTokenSwapInput(minTokens: BigUInt, deadline: BigUInt) -> Data {
+        let function = Function(name: "trxToTokenSwapInput", parameters: [.uint(bits: 256), .uint(bits: 256)])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [minTokens, deadline])
+        return encoder.data
+    }
+    
+    /// Encodes a function call to `trxToTokenSwapOutput`
+    ///
+    /// Solidity function: `function trxToTokenSwapOutput(uint256 tokensBought, uint256 deadline) public returns (uint256);`
+    public static func encodetTrxToTokenSwapOutput(tokensBought: BigUInt, deadline: BigUInt) -> Data {
+        let function = Function(name: "trxToTokenSwapOutput", parameters: [.uint(bits: 256), .uint(bits: 256)])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [tokensBought, deadline])
+        return encoder.data
+    }
+    
+    
+    /// Encodes a function call to `tokenToTrxSwapInput`
+    ///
+    /// Solidity function: `function tokenToTrxSwapInput(uint256 tokens_sold, uint256 min_trx, uint256 deadline) external returns (uint256);`
+    public static func encodeTokenToTrxSwapInput(tokensSold: BigUInt, minTrx: BigUInt, deadline: BigUInt) -> Data {
+        let function = Function(name: "tokenToTrxSwapInput", parameters: [.uint(bits: 256), .uint(bits: 256), .uint(bits: 256)])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [tokensSold, minTrx, deadline])
+        return encoder.data
+    }
+    
+    /// Encodes a function call to `tokenToTrxSwapOutput`
+    ///
+    /// Solidity function: `function function tokenToTrxSwapOutput(uint256 trx_bought, uint256 max_tokens, uint256 deadline) external returns (uint256);`
+    public static func encodeTokenToTrxSwapOutput(trxBought: BigUInt, maxTokens: BigUInt, deadline: BigUInt) -> Data {
+        let function = Function(name: "tokenToTrxSwapOutput", parameters: [.uint(bits: 256), .uint(bits: 256), .uint(bits: 256)])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [trxBought, maxTokens, deadline])
+        return encoder.data
+    }
+    
+    /// Encodes a function call to `tokenToTokenSwapInput`
+    ///
+    /// Solidity function: `function tokenToTokenSwapInput(uint256 tokens_sold, uint256 min_tokens_bought, uint256 min_trx_bought, uint256 deadline, address token_addr) external returns (uint256);`
+    public static func encodeTokenToTokenSwapInput(tokensSold: BigUInt, minTokensBought: BigUInt, minTrxBought: BigUInt, deadline: BigUInt, tokenAddr: Address) -> Data {
+        let function = Function(name: "tokenToTokenSwapInput", parameters: [.uint(bits: 256), .uint(bits: 256), .uint(bits: 256), .uint(bits: 256), .address])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [tokensSold, minTokensBought, minTrxBought, deadline, tokenAddr])
+        return encoder.data
+    }
+    
+    /// Encodes a function call to `tokenToTrxSwapOutput`
+    ///
+    /// Solidity function: `function tokenToTokenSwapOutput(uint256 tokens_bought, uint256 max_tokens_sold, uint256 max_trx_sold, uint256 deadline, address token_addr) external returns (uint256);`
+    public static func encodeTokenToTokenSwapOutput(tokensBought: BigUInt, maxTokensSold: BigUInt, maxTrxSold: BigUInt, deadline: BigUInt, tokenAddr: Address) -> Data {
+        let function = Function(name: "tokenToTokenSwapOutput", parameters: [.uint(bits: 256), .uint(bits: 256), .uint(bits: 256), .uint(bits: 256), .address])
+        let encoder = ABIEncoder()
+        try! encoder.encode(function: function, arguments: [tokensBought, maxTokensSold, maxTrxSold, deadline, tokenAddr])
+        return encoder.data
+    }
 }
